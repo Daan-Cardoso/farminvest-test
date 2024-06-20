@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import vueDebounce from 'vue-debounce';
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import * as MdIcons from "oh-vue-icons/icons/md";
 
@@ -11,7 +12,8 @@ import './assets/scss/reset.scss'
 addIcons(...Object.values({ ...MdIcons }));
 
 const app = createApp(App)
-app.component("v-icon", OhVueIcon);
+app.component("v-icon", OhVueIcon)
+app.directive('debounce', vueDebounce)
 app.use(createPinia())
 app.use(router)
 
