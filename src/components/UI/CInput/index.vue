@@ -10,12 +10,7 @@
         <v-icon class="c-input__field__search-icon" name="md-search" />
       </template>
 
-      <input
-        class="c-input__field__raw"
-        v-bind="inputAttrs"
-        :type="type === 'password' && showPassword ? 'text' : type"
-        v-model="value"
-      />
+      <input class="c-input__field__raw" v-bind="inputAttrs" :type="inputType" v-model="value" />
 
       <template v-if="type === 'password'">
         <v-icon
@@ -37,7 +32,7 @@
 import { defineModel, useAttrs, defineOptions, computed, ref } from 'vue'
 import { filterAttributes } from '@/helpers/formHelpers'
 
-const { error } = defineProps({
+const { error, type } = defineProps({
   label: { type: String, required: false },
   mask: { type: String, required: false },
   type: { type: String, default: 'text' },
@@ -54,6 +49,12 @@ const classModifiers = computed(() => {
   return {
     'c-input__field--has-error': !!error
   }
+})
+
+const inputType = computed(() => {
+  if (type === 'password' && showPassword.value) return 'password'
+
+  return 'text'
 })
 
 const toggleShowPassword = () => {
@@ -76,7 +77,7 @@ const inputAttrs = filterAttributes($attrs, ['type', 'class', 'required', 'valid
   }
 
   &__label {
-    color: black;
+    color: $font;
     display: block;
     font-size: 0.8rem;
     letter-spacing: -0.4px;
@@ -93,7 +94,7 @@ const inputAttrs = filterAttributes($attrs, ['type', 'class', 'required', 'valid
   }
 
   &__field {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $font;
     width: 100%;
     background: white;
     transition: border-color 0.3s;
@@ -156,7 +157,7 @@ const inputAttrs = filterAttributes($attrs, ['type', 'class', 'required', 'valid
 
     &__search-icon {
       width: 16px;
-      color: black;
+      color: $font;
       transition: color 0.3s;
     }
   }

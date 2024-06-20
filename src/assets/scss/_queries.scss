@@ -25,3 +25,13 @@ $desktop: "screen and (min-width: 1440px)";
     @content;
   }
 }
+
+@mixin isContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: calc(100% - (30px * 2));
+
+  @include Tablet {
+    max-width: calc(100% - (122px * 2));
+  }
+}

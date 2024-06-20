@@ -10,13 +10,34 @@
   </div>
 </template>
 
+<script>
+export default { name: 'CCard' }
+</script>
+
 <script setup></script>
 
 <style lang="scss">
 .c-card {
-  width: 100%;
   border-radius: 6px;
-  border: 2px solid #f8f7f7;
-  padding: 30px;
+  border: 2px solid $border;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  background-color: $white;
+
+  @include Tablet {
+    padding: 30px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>
