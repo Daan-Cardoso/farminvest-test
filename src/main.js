@@ -7,6 +7,7 @@ import App from './App.vue'
 import router from './router'
 import './assets/scss/reset.scss'
 
+// https://oh-vue-icons.js.org/ search for icons here
 addIcons(...Object.values({ ...MdIcons }));
 
 const app = createApp(App)
