@@ -13,9 +13,9 @@ export default { name: 'SearchBox' }
 </script>
 
 <script setup>
-import CCard from '@/components/UI/CCard'
-import CInput from '@/components/UI/CInput'
-import CTypo from '@/components/UI/CTypo'
+import CCard from '@/components/CCard'
+import CInput from '@/components/CInput'
+import CTypo from '@/components/CTypo'
 
 const emit = defineEmits(['search'])
 
@@ -26,9 +26,10 @@ const handleSearch = (value) => {
 
 <style lang="scss">
 .search-box {
-  &__title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  @at-root .c-card {
+    &__header {
+      margin-bottom: 1rem;
+    }
   }
 }
 </style>

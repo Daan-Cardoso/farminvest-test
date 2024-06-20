@@ -1,19 +1,23 @@
 <template>
-  <header class="c-header">
-    <figure class="c-header__logo">
-      <img class="c-header__logo__image" src="/src/assets/images/logo.png" alt="Logo Covidômetro" />
+  <header class="main-header">
+    <figure class="main-header__logo">
+      <img
+        class="main-header__logo__image"
+        src="/src/assets/images/logo.png"
+        alt="Logo Covidômetro"
+      />
     </figure>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'CHeader'
+  name: 'MainHeader'
 }
 </script>
 
 <style lang="scss" scoped>
-.c-header {
+.main-header {
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 4px;

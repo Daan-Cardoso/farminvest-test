@@ -1,9 +1,11 @@
-<script setup>
-import { RouterView } from 'vue-router'
-</script>
-
 <template>
+  <MainHeader />
   <RouterView />
 </template>
 
-<style scoped></style>
+<script setup>
+import MainHeader from '@/Layout/MainHeader'
+import { RouterView } from 'vue-router'
+</script>
+
+<style lang="scss"></style>

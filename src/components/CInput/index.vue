@@ -28,6 +28,12 @@
   </label>
 </template>
 
+<script>
+export default {
+  name: 'CInput'
+}
+</script>
+
 <script setup>
 import { defineModel, useAttrs, defineOptions, computed, ref } from 'vue'
 import { filterAttributes } from '@/helpers/formHelpers'
