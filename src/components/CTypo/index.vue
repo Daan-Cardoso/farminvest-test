@@ -19,7 +19,7 @@ const { tag, highlight } = defineProps({
   tag: {
     type: String,
     default: 'text',
-    validator: (value) => ['text', 'main-title', 'secondary-title'].includes(value)
+    validator: (value) => ['text', 'main-title', 'secondary-title', 'hint'].includes(value)
   },
   highlight: {
     type: Boolean,
@@ -58,6 +58,11 @@ $tags-style-map: (
   secondary-title: (
     font-size: 1.5rem,
     font-weight: 700,
+    letter-spacing: 0.5px
+  ),
+  hint: (
+    font-size: 0.7rem,
+    font-weight: 400,
     letter-spacing: 0.5px
   )
 );
