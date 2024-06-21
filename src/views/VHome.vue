@@ -9,7 +9,7 @@
         <template v-if="filtredCountries.length">
           <CountryInfoBox v-for="country in filtredCountries" :key="country.iso" :country />
         </template>
-        <template v-else-if="isFetched">
+        <template v-else-if="initialized">
           <CTypo tag="text" text="Nenhum país encontrado" />
         </template>
       </section>
@@ -23,13 +23,12 @@ import SearchBox from '@/Layout/SearchBox'
 import HeroBanner from '@/Layout/HeroBanner'
 import CountryInfoBox from '@/Layout/CountryInfoBox'
 import CTypo from '@/components/CTypo'
-import { useCountryStore } from '@/stores/Country'
+import { useCountryStore } from '@/stores/countryStore'
 import { filterCountries } from '@/utils/filterCountries'
+import { storeToRefs } from 'pinia'
 
-const { init } = useCountryStore()
-const isFetched = ref(false)
-
-const countries = ref([])
+const countryStore = useCountryStore()
+const { countries, initialized } = storeToRefs(countryStore)
 const searchValue = ref('')
 
 const filtredCountries = computed(() => {
@@ -44,10 +43,7 @@ const handleSearch = async (value) => {
 }
 
 onBeforeMount(async () => {
-  const [, data] = await init()
-
-  countries.value = data
-  isFetched.value = true
+  await countryStore.init()
 })
 </script>
 
