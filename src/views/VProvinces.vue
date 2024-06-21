@@ -1,59 +1,53 @@
 <template>
-  <main class="view-home">
+  <main class="view-provinces">
     <div class="container">
-      <HeroBanner />
-
       <section class="card-grid">
+        <CTypo tag="text">
+          <router-link :to="{ name: 'home' }">Voltar a lista de países</router-link>
+        </CTypo>
+
         <SearchBox
           :sortOptions="sortOptions"
           @search="handleSearch"
           @sort="handleSort"
-          title="Filtrar dados sobre um país"
-          placeholder="Pesquisar por nome de país ex: Brazil"
+          placeholder="Pesquisar por nome de estado/província ex: São Paulo"
+          title="Filtrar dados sobre um estado/província"
         />
 
-        <CTransition name="slide-fade" isGroup>
-          <template v-if="filtredCountries.length">
-            <CardInfo
-              v-for="country in filtredCountries"
-              :key="country.iso"
-              :item="country"
-              :useHover="country.hasProvincesInfo"
-              @click="handleRedirect(country)"
-            />
+        <TransitionGroup name="slide-fade">
+          <template v-if="filtredProvinces.length">
+            <CardInfo v-for="province in filtredProvinces" :key="province.name" :item="province" />
           </template>
 
           <template v-else-if="initialized">
-            <CTypo tag="text" text="Nenhum país encontrado" />
+            <CTypo tag="text" text="Nenhum estado/província encontrado" />
           </template>
 
           <template v-else-if="isLoading">
             <CLoading />
           </template>
-        </CTransition>
+        </TransitionGroup>
       </section>
     </div>
   </main>
 </template>
 
 <script setup>
-import CLoading from '@/components/CLoading'
-import CTransition from '@/components/CTransition'
-import CTypo from '@/components/CTypo'
-import CardInfo from '@/layout/CardInfo'
-import HeroBanner from '@/layout/HeroBanner'
-import SearchBox from '@/layout/SearchBox'
 import { computed, onBeforeMount, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import SearchBox from '@/layout/SearchBox'
+import CLoading from '@/components/CLoading'
+import CardInfo from '@/layout/CardInfo'
+import CTypo from '@/components/CTypo'
+import { useCountryStore } from '@/stores/countryStore'
 import { filterCountries } from '@/utils/filterCovidData'
 import { storeToRefs } from 'pinia'
-import { useCountryStore } from '@/stores/countryStore'
-import { useRouter } from 'vue-router'
 
 const countryStore = useCountryStore()
-const { countries, initialized, isLoading } = storeToRefs(countryStore)
+const { provinces, initialized, isLoading } = storeToRefs(countryStore)
 const searchValue = ref('')
 const sortBy = ref({ key: 'name', order: 'asc' })
-const router = useRouter()
+const route = useRoute()
 
 const sortOptions = [
   { text: 'Nome', value: 'name' },
@@ -62,8 +56,8 @@ const sortOptions = [
   { text: 'Taxa de Fatalidade', value: 'fatality_rate' }
 ]
 
-const filtredCountries = computed(() => {
-  return filterCountries(countries.value, {
+const filtredProvinces = computed(() => {
+  return filterCountries(provinces.value, {
     search: searchValue.value,
     sortBy: sortBy.value
   })
@@ -78,19 +72,14 @@ const handleSort = async (value) => {
   sortBy.value.order = value.order
 }
 
-const handleRedirect = (country) => {
-  if (!country.hasProvincesInfo) return
-  router.push({ name: 'provinces', params: { country: country.iso } })
-}
-
 onBeforeMount(async () => {
-  if (countries.value.length) return
-  await countryStore.init()
+  const country = route.params.country
+  await countryStore.fetchCountry(country)
 })
 </script>
 
 <style lang="scss">
-.view-home {
+.view-provinces {
   background: radial-gradient(circle at top left, $light 40%, $white 50%);
   min-height: 100vh;
 

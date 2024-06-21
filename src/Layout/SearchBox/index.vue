@@ -1,14 +1,10 @@
 <template>
   <CCard class="search-box">
     <template #header>
-      <CTypo tag="secondary-title" text="Filtrar dados sobre um pais" />
+      <CTypo tag="secondary-title" :text="title" />
     </template>
 
-    <CInput
-      placeholder="Digite o nome do pais ex: Brazil"
-      type="search"
-      v-debounce="handleSearch"
-    />
+    <CInput :placeholder="placeholder" type="search" v-debounce="handleSearch" />
 
     <CSort :options="sortOptions" v-model="sort" />
   </CCard>
@@ -26,7 +22,9 @@ import CTypo from '@/components/CTypo'
 import CSort from '@/components/CSort'
 
 defineProps({
-  sortOptions: { type: Array, required: true }
+  sortOptions: { type: Array, required: true },
+  placeholder: { type: String, default: 'Pesquisar' },
+  title: { type: String, default: 'Filtrar dados' }
 })
 
 const sort = defineModel()

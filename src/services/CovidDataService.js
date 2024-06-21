@@ -1,9 +1,9 @@
-import axios from "axios"
+import axios from 'axios'
 
 const api = axios.create({
-  baseURL: "https://covid-api.com/api",
+  baseURL: 'https://covid-api.com/api',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json'
   }
 })
 
@@ -13,9 +13,21 @@ export const fetchAllCountries = async (params) => {
 
     const { data } = response
 
-    return [ null, data ]
+    return [null, data]
+  } catch (error) {
+    return [error, null]
   }
-  catch (error) {
-    return [ error, null ] 
+}
+
+export const fetchCountryByName = async (country) => {
+  const params = { iso: country }
+  try {
+    const response = await api.get('/reports', { params })
+
+    const { data } = response
+
+    return [null, data]
+  } catch (error) {
+    return [error, null]
   }
 }

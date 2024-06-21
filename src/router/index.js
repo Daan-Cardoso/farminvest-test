@@ -7,6 +7,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('@/views/VHome.vue')
+    },
+    {
+      path: '/:country/provinces',
+      name: 'provinces',
+      component: () => import('@/views/VProvinces.vue')
     }
   ]
 })

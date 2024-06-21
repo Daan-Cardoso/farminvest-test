@@ -1,15 +1,15 @@
 <template>
-  <CCard class="country-info-box">
+  <CCard :class="['card-info', { 'card-info--use-hover': useHover }]">
     <template #header>
-      <CTypo tag="secondary-title" :text="country.name" />
+      <CTypo tag="secondary-title" :text="item.name" />
     </template>
 
-    <div class="country-info-box__content">
-      <div class="country-info-box__grid">
+    <div class="card-info__content">
+      <div class="card-info__grid">
         <div
-          class="country-info-box__grid__item"
+          class="card-info__grid__item"
           v-for="info in infosToDisplay"
-          :key="country.iso + info.label"
+          :key="(item.iso || item.name) + info.label"
         >
           <CTypo tag="text" :text="info.label" />
 
@@ -21,36 +21,26 @@
 </template>
 
 <script>
-export default { name: 'CountryInfoBox' }
+export default { name: 'CardInfo' }
 </script>
 
 <script setup>
 import { computed } from 'vue'
 import CCard from '@/components/CCard'
 import CTypo from '@/components/CTypo'
+import { formatNumber, formatPercentage } from '@/utils/formatNumbers'
 
 import { defineProps } from 'vue'
 
-const { country } = defineProps({
-  country: { type: Object, required: true }
+const { item } = defineProps({
+  item: { type: Object, required: true },
+  useHover: { type: Boolean, default: false }
 })
 
-const formatNumber = (number) => {
-  return new Intl.NumberFormat('pt-BR').format(number)
-}
-
-const formatPercentage = (number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'percent',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 3
-  }).format(number)
-}
-
 const infosToDisplay = computed(() => {
-  const formatedConfirmedNumber = formatNumber(country.confirmed)
-  const formatedDeathsNumber = formatNumber(country.deaths)
-  const fatalityRate = formatPercentage(country.fatality_rate)
+  const formatedConfirmedNumber = formatNumber(item.confirmed)
+  const formatedDeathsNumber = formatNumber(item.deaths)
+  const fatalityRate = formatPercentage(item.fatality_rate)
 
   return [
     { label: 'Total de casos', value: formatedConfirmedNumber },
@@ -61,7 +51,15 @@ const infosToDisplay = computed(() => {
 </script>
 
 <style lang="scss">
-.country-info-box {
+.card-info {
+  &--use-hover {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($light, 0.3);
+    }
+  }
+
   @at-root .c-card {
     &__header {
       margin-bottom: 1rem;
