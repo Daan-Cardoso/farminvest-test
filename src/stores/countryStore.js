@@ -5,10 +5,7 @@ import { groupCountries } from '@/utils/groupCountries'
 export const useCountryStore = defineStore('Country', {
   state: () => ({
     countries: [],
-    search: '',
-    sortBy: 'confirmed',
     isLoading: false,
-    error: null,
     initialized: false
   }),
 actions: {

@@ -5,24 +5,30 @@ export const filterCountries = (countries, params) => {
     return country.name.toLowerCase().includes(search.toLowerCase())
   })
 
-  switch (sortBy) {
+  switch (sortBy.key) {
     case 'confirmed':
       filteredCountries.sort((a, b) => {
-        return b.confirmed - a.confirmed
+        return sortBy.order == 'asc' ? a.confirmed - b.confirmed : b.confirmed - a.confirmed
       })
       break
 
     case 'deaths':
       filteredCountries.sort((a, b) => {
-        return b.deaths - a.deaths
+        return sortBy.order == 'asc' ? a.deaths - b.deaths : b.deaths - a.deaths
       })
       break
 
-    case 'fatality':
+    case 'fatality_rate':
       filteredCountries.sort((a, b) => {
-        return a.fatality_rate - b.fatality_rate
+        return sortBy.order == 'asc' ? a.fatality_rate - b.fatality_rate : b.fatality_rate - a.fatality_rate
       })
       break
+    case 'name':
+    default:
+      filteredCountries.sort((a, b) => {
+        return sortBy.order == 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+      })
+    break
   }
 
   return filteredCountries

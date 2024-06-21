@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import MainHeader from '@/Layout/MainHeader'
+import MainHeader from '@/layout/MainHeader'
 import { RouterView } from 'vue-router'
 </script>
 
