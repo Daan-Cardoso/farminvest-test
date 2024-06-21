@@ -1,4 +1,4 @@
-export const groupCountriesInfo = (data) => {
+export const groupCountries = (data) => {
   const result = data.reduce((acc, item) => {
     const { iso } = item.region
     

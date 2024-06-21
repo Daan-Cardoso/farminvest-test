@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { fetchAllCountries } from '@/services/Covid'
-import { groupCountriesInfo } from '@/helpers/countryHelpers'
+import { groupCountries } from '@/utils/groupCountries'
 
 
 
@@ -10,7 +10,7 @@ export const useCountryStore = defineStore('Country', () => {
 
     if (err) return
 
-    const data = groupCountriesInfo(res.data)
+    const data = groupCountries(res.data)
 
 
     return [err, data]

@@ -36,7 +36,7 @@ export default {
 
 <script setup>
 import { defineModel, useAttrs, defineOptions, computed, ref } from 'vue'
-import { filterAttributes } from '@/helpers/formHelpers'
+import { filterAttributes } from '@/utils/filterInputAttributes'
 
 const { error, type } = defineProps({
   label: { type: String, required: false },

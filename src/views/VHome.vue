@@ -24,7 +24,7 @@ import HeroBanner from '@/Layout/HeroBanner'
 import CountryInfoBox from '@/Layout/CountryInfoBox'
 import CTypo from '@/components/CTypo'
 import { useCountryStore } from '@/stores/Country'
-import { filterCountries } from '@/helpers/searchHelpers'
+import { filterCountries } from '@/utils/filterCountries'
 
 const { init } = useCountryStore()
 const isFetched = ref(false)
