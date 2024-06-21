@@ -24,7 +24,7 @@ export default { name: 'CCard' }
   padding: 10px;
   width: 100%;
   background-color: $white;
-  z-index: 0;
+  position: relative;
 
   @include Tablet {
     padding: 30px;

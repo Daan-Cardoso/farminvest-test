@@ -102,7 +102,7 @@ const inputAttrs = filterAttributes($attrs, ['type', 'class', 'required', 'valid
   &__field {
     border-bottom: 1px solid $font;
     width: 100%;
-    background: white;
+    background: $white;
     transition: border-color 0.3s;
 
     &:focus-within {
