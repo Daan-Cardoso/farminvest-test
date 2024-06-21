@@ -16,8 +16,6 @@
           <CTypo tag="secondary-title" :text="info.value" highlight />
         </div>
       </div>
-
-      <CTypo tag="hint"> Última atualização: {{ formatDate(country.last_update) }} </CTypo>
     </div>
   </CCard>
 </template>
@@ -47,10 +45,6 @@ const formatPercentage = (number) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 3
   }).format(number)
-}
-
-const formatDate = (date) => {
-  return new Intl.DateTimeFormat('pt-BR').format(new Date(date))
 }
 
 const infosToDisplay = computed(() => {

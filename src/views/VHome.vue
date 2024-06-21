@@ -6,12 +6,11 @@
       <section class="card-grid">
         <SearchBox @search="handleSearch" />
 
-        <template v-if="[].length > 0">
-          <CountryInfoBox v-for="country in []" :key="country.iso" :country />
+        <template v-if="filtredCountries.length">
+          <CountryInfoBox v-for="country in filtredCountries" :key="country.iso" :country />
         </template>
-        <template v-else>
-          <CountryInfoBox :country="country" />
-          <!-- <CTypo tag="text" text="No countries found" /> -->
+        <template v-else-if="isFetched">
+          <CTypo tag="text" text="Nenhum país encontrado" />
         </template>
       </section>
     </div>
@@ -19,24 +18,37 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
 import SearchBox from '@/Layout/SearchBox'
 import HeroBanner from '@/Layout/HeroBanner'
 import CountryInfoBox from '@/Layout/CountryInfoBox'
-// import CTypo from '@/components/CTypo'
+import CTypo from '@/components/CTypo'
+import { useCountryStore } from '@/stores/Country'
+import { filterCountries } from '@/helpers/searchHelpers'
 
-const country = ref({
-  name: 'Brasil',
-  iso: 'BRA',
-  confirmed: 37076053,
-  deaths: 699276,
-  fatality_rate: 0.0189,
-  last_update: '2021-09-23T00:00:00Z'
+const { init } = useCountryStore()
+const isFetched = ref(false)
+
+const countries = ref([])
+const searchValue = ref('')
+
+const filtredCountries = computed(() => {
+  return filterCountries(countries.value, {
+    search: searchValue.value,
+    sortBy: 'confirmed'
+  })
 })
 
-const handleSearch = (value) => {
-  console.log('vhome', value)
+const handleSearch = async (value) => {
+  searchValue.value = value
 }
+
+onBeforeMount(async () => {
+  const [, data] = await init()
+
+  countries.value = data
+  isFetched.value = true
+})
 </script>
 
 <style lang="scss">

@@ -13,7 +13,9 @@ addIcons(...Object.values({ ...MdIcons }));
 
 const app = createApp(App)
 app.component("v-icon", OhVueIcon)
-app.directive('debounce', vueDebounce())
+app.directive('debounce', vueDebounce({
+  defaultTime: '500ms',
+}))
 app.use(createPinia())
 app.use(router)
 
