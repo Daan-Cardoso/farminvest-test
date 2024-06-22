@@ -33,15 +33,15 @@
 </template>
 
 <script setup>
-import { computed, onBeforeMount, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import SearchBox from '@/layout/SearchBox'
 import CLoading from '@/components/CLoading'
-import CardInfo from '@/layout/CardInfo'
 import CTypo from '@/components/CTypo'
-import { useCountryStore } from '@/stores/countryStore'
+import CardInfo from '@/layout/CardInfo'
+import SearchBox from '@/layout/SearchBox'
+import { computed, onBeforeMount, ref } from 'vue'
 import { filterCountries } from '@/utils/filterCovidData'
 import { storeToRefs } from 'pinia'
+import { useCountryStore } from '@/stores/countryStore'
+import { useRoute } from 'vue-router'
 
 const countryStore = useCountryStore()
 const { provinces, initialized, isLoading } = storeToRefs(countryStore)

@@ -50,10 +50,10 @@ import { useCountryStore } from '@/stores/countryStore'
 import { useRouter } from 'vue-router'
 
 const countryStore = useCountryStore()
-const { countries, initialized, isLoading } = storeToRefs(countryStore)
+const router = useRouter()
 const searchValue = ref('')
 const sortBy = ref({ key: 'name', order: 'asc' })
-const router = useRouter()
+const { countries, initialized, isLoading } = storeToRefs(countryStore)
 
 const sortOptions = [
   { text: 'Nome', value: 'name' },

@@ -1,6 +1,6 @@
 <template>
   <label class="c-sort">
-    <CTypo tag="text" text="Ordenar por" />
+    <CTypo tag="text" :text="label" />
 
     <div class="c-sort__wrapper">
       <div
@@ -50,6 +50,7 @@ const selectedOption = ref(null)
 const isAscending = ref(true)
 
 const { options } = defineProps({
+  label: { type: String, default: 'Ordenar por' },
   options: { type: Array, required: true },
   modelValue: { type: Object, default: () => ({ key: 'name', order: 'asc' }) }
 })
