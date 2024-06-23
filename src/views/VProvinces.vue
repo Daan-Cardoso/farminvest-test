@@ -16,7 +16,7 @@
 
         <TransitionGroup name="slide-fade">
           <template v-if="filtredProvinces.length">
-            <CardInfo v-for="province in filtredProvinces" :key="province.name" :item="province" />
+            <InfoCard v-for="province in filtredProvinces" :key="province.name" :item="province" />
           </template>
 
           <template v-else-if="initialized">
@@ -33,10 +33,10 @@
 </template>
 
 <script setup>
-import CLoading from '@/components/CLoading'
-import CTypo from '@/components/CTypo'
-import CardInfo from '@/layout/CardInfo'
-import SearchBox from '@/layout/SearchBox'
+import CLoading from '@/components/CLoading/CLoading.vue'
+import CTypo from '@/components/CTypo/CTypo.vue'
+import InfoCard from '@/layout/InfoCard/InfoCard.vue'
+import SearchBox from '@/layout/SearchBox/SearchBox.vue'
 import { computed, onBeforeMount, ref } from 'vue'
 import { filterCountries } from '@/utils/filterCovidData'
 import { storeToRefs } from 'pinia'

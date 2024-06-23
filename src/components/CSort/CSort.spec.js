@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import CSort from './index.vue'
+import CSort from './CSort.vue'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import * as MdIcons from 'oh-vue-icons/icons/md'
 

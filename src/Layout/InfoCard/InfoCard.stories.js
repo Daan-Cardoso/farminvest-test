@@ -1,9 +1,9 @@
-import CardInfo from './index.vue'
+import InfoCard from './InfoCard.vue'
 import '@/assets/scss/reset.scss'
 
 export default {
-  title: 'Layouts/CardInfo',
-  component: CardInfo,
+  title: 'Layouts/InfoCard',
+  component: InfoCard,
   tags: ['autodocs'],
   argTypes: {
     item: { control: 'object' },

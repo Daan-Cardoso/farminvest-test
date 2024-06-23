@@ -4,12 +4,6 @@
   </component>
 </template>
 
-<script>
-export default {
-  name: 'CTransition'
-}
-</script>
-
 <script setup>
 import { Transition, TransitionGroup } from 'vue'
 defineProps({

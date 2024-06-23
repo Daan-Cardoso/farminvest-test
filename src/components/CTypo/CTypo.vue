@@ -6,12 +6,6 @@
   </component>
 </template>
 
-<script>
-export default {
-  name: 'CTypo'
-}
-</script>
-
 <script setup>
 import { computed } from 'vue'
 

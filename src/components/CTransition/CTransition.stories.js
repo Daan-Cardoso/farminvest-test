@@ -1,4 +1,4 @@
-import CTransition from './index.vue'
+import CTransition from './CTransition.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

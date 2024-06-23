@@ -1,4 +1,4 @@
-import HeroBanner from './index.vue'
+import HeroBanner from './HeroBanner.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

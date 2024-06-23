@@ -1,4 +1,4 @@
-import SearchBox from './index.vue'
+import SearchBox from './SearchBox.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

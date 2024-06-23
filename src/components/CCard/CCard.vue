@@ -10,12 +10,6 @@
   </div>
 </template>
 
-<script>
-export default { name: 'CCard' }
-</script>
-
-<script setup></script>
-
 <style lang="scss">
 .c-card {
   border-radius: 6px;

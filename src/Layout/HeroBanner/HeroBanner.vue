@@ -14,14 +14,8 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'HeroBanner'
-}
-</script>
-
 <script setup>
-import CTypo from '@/components/CTypo'
+import CTypo from '@/components/CTypo/CTypo.vue'
 </script>
 
 <style lang="scss">

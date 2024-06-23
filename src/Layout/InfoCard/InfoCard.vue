@@ -1,13 +1,13 @@
 <template>
-  <CCard :class="['card-info', { 'card-info--use-hover': useHover }]">
+  <CCard :class="['info-card', { 'info-card--use-hover': useHover }]">
     <template #header>
       <CTypo tag="secondary-title" :text="item.name" />
     </template>
 
-    <div class="card-info__content">
-      <div class="card-info__grid">
+    <div class="info-card__content">
+      <div class="info-card__grid">
         <div
-          class="card-info__grid__item"
+          class="info-card__grid__item"
           v-for="info in infosToDisplay"
           :key="(item.iso || item.name) + info.label"
         >
@@ -20,14 +20,10 @@
   </CCard>
 </template>
 
-<script>
-export default { name: 'CardInfo' }
-</script>
-
 <script setup>
 import { computed } from 'vue'
-import CCard from '@/components/CCard'
-import CTypo from '@/components/CTypo'
+import CCard from '@/components/CCard/CCard.vue'
+import CTypo from '@/components/CTypo/CTypo.vue'
 import { formatNumber, formatPercentage } from '@/utils/formatNumbers'
 
 import { defineProps } from 'vue'
@@ -51,7 +47,7 @@ const infosToDisplay = computed(() => {
 </script>
 
 <style lang="scss">
-.card-info {
+.info-card {
   &--use-hover {
     cursor: pointer;
 

@@ -43,7 +43,7 @@
 
 <script setup>
 import { ref, computed, defineProps, defineEmits } from 'vue'
-import CTypo from '@/components/CTypo'
+import CTypo from '@/components/CTypo/CTypo.vue'
 
 const isOpened = ref(false)
 const selectedOption = ref(null)

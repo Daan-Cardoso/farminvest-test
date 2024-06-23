@@ -10,16 +10,12 @@
   </CCard>
 </template>
 
-<script>
-export default { name: 'SearchBox' }
-</script>
-
 <script setup>
 import { defineModel, watch } from 'vue'
-import CCard from '@/components/CCard'
-import CInput from '@/components/CInput'
-import CTypo from '@/components/CTypo'
-import CSort from '@/components/CSort'
+import CCard from '@/components/CCard/CCard.vue'
+import CInput from '@/components/CInput/CInput.vue'
+import CTypo from '@/components/CTypo/CTypo.vue'
+import CSort from '@/components/CSort/CSort.vue'
 
 defineProps({
   sortOptions: { type: Array, required: true },

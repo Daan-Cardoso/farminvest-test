@@ -4,12 +4,6 @@
   </CCard>
 </template>
 
-<script>
-export default {
-  name: 'CLoading'
-}
-</script>
-
 <script setup>
-import CCard from '@/components/CCard'
+import CCard from '@/components/CCard/CCard.vue'
 </script>

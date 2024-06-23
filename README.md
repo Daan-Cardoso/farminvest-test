@@ -47,7 +47,7 @@ A estrutura dos componentes é a seguinte
 ```
 components/
 ├── componentName/
-│   ├── index.vue
+│   ├── componentName.vue
 │   ├── componentName.stories.js
 │   └── componentName.spec.js
 ```

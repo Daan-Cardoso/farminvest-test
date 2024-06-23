@@ -1,4 +1,4 @@
-import CTypo from './index.vue'
+import CTypo from './CTypo.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

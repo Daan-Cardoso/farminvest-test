@@ -1,4 +1,4 @@
-import CLoading from './index.vue'
+import CLoading from './CLoading.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

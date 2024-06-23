@@ -1,4 +1,4 @@
-import CCard from './index.vue'
+import CCard from './CCard.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

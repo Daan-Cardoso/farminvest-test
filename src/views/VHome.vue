@@ -14,7 +14,7 @@
 
         <CTransition name="slide-fade" isGroup>
           <template v-if="filtredCountries.length">
-            <CardInfo
+            <InfoCard
               v-for="country in filtredCountries"
               :key="country.iso"
               :item="country"
@@ -37,12 +37,12 @@
 </template>
 
 <script setup>
-import CLoading from '@/components/CLoading'
-import CTransition from '@/components/CTransition'
-import CTypo from '@/components/CTypo'
-import CardInfo from '@/layout/CardInfo'
-import HeroBanner from '@/layout/HeroBanner'
-import SearchBox from '@/layout/SearchBox'
+import CLoading from '@/components/CLoading/CLoading.vue'
+import CTransition from '@/components/CTransition/CTransition.vue'
+import CTypo from '@/components/CTypo/CTypo.vue'
+import InfoCard from '@/layout/InfoCard/InfoCard.vue'
+import HeroBanner from '@/layout/HeroBanner/HeroBanner.vue'
+import SearchBox from '@/layout/SearchBox/SearchBox.vue'
 import { computed, onBeforeMount, ref } from 'vue'
 import { filterCountries } from '@/utils/filterCovidData'
 import { storeToRefs } from 'pinia'

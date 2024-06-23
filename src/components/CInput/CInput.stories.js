@@ -1,4 +1,4 @@
-import CInput from './index.vue'
+import CInput from './CInput.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

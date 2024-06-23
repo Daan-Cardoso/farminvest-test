@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import CLoading from './index.vue'
+import CLoading from './CLoading.vue'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import * as MdIcons from 'oh-vue-icons/icons/md'
 

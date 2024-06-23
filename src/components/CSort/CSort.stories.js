@@ -1,4 +1,4 @@
-import CSort from './index.vue'
+import CSort from './CSort.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

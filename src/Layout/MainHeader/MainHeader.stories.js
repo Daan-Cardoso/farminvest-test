@@ -1,4 +1,4 @@
-import MainHeader from './index.vue'
+import MainHeader from './MainHeader.vue'
 import '@/assets/scss/reset.scss'
 
 export default {

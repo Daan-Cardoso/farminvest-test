@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import CCard from './index.vue'
+import CCard from './CCard.vue'
 
 describe('CCard.vue', () => {
   it('renders slot content', () => {

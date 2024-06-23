@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import CTypo from './index.vue'
+import CTypo from './CTypo.vue'
 
 describe('CTypo.vue', () => {
   it('renders default text content', () => {
