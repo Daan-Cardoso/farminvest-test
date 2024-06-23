@@ -4,6 +4,8 @@
 
 O desafio consistiu na criação de uma landing page, o Covidômetro, que faz consumo de uma API REST para obter informações sobre a covid-19.
 
+[Projeto Publicado na Netlify](https://6677b36efaf0e253f10f7762--magenta-kelpie-ad2416.netlify.app/)
+
 ## Layout
 
 O layout da página foi inspirado na seguinte imagem:
