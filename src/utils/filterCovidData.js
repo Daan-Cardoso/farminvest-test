@@ -1,7 +1,7 @@
 export const filterCountries = (countries, params) => {
   const { search, sortBy } = params
 
-  let filteredCountries = countries.filter((country) => {
+  let filteredCountries = countries?.filter((country) => {
     return country.name.toLowerCase().includes(search.toLowerCase())
   })
 

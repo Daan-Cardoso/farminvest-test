@@ -27,7 +27,7 @@
             <CTypo tag="text" text="Nenhum país encontrado" />
           </template>
 
-          <template v-else-if="isLoading">
+          <template v-if="isLoading">
             <CLoading />
           </template>
         </CTransition>

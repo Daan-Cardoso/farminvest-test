@@ -16,10 +16,18 @@ export const useCountryStore = defineStore('Country', {
       this.isLoading = false
 
       if (err) return
+      const { current_page, last_page } = res
 
       const data = groupCountries(res.data)
 
-      this.countries = data
+      this.countries.push(...data)
+
+      if (current_page < last_page) {
+        await this.fetchCountries({
+          page: current_page + 1,
+          per_page: 100
+        })
+      }
     },
 
     async fetchCountry(countryName) {
@@ -45,7 +53,10 @@ export const useCountryStore = defineStore('Country', {
     async init() {
       this.initialized = false
 
-      await this.fetchCountries()
+      await this.fetchCountries({
+        page: 1,
+        per_page: 100
+      })
 
       this.initialized = true
     }

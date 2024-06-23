@@ -23,7 +23,7 @@
             <CTypo tag="text" text="Nenhum estado/província encontrado" />
           </template>
 
-          <template v-else-if="isLoading">
+          <template v-if="isLoading">
             <CLoading />
           </template>
         </TransitionGroup>
