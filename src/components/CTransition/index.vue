@@ -1,5 +1,5 @@
 <template>
-  <component :is="isGroup ? TransitionGroup : Transition" :name="name">
+  <component class="c-transition" :is="isGroup ? TransitionGroup : Transition" :name="name">
     <slot />
   </component>
 </template>
