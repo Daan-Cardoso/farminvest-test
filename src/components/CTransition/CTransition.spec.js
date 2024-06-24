@@ -14,11 +14,10 @@ describe('CTransition.vue', () => {
       }
     })
 
-    console.log(wrapper.html())
-    expect(wrapper.find('.c-transition').exists()).toBe(true)
+    expect(wrapper.find('[name="slide-fade"]').exists()).toBe(true)
 
-    expect(wrapper.find('.c-transition p').exists()).toBe(true)
-    expect(wrapper.find('.c-transition p').text()).toBe('Transition body')
+    expect(wrapper.find('p').exists()).toBe(true)
+    expect(wrapper.find('p').text()).toBe('Transition body')
   })
 
   it('renders CTransition with group of items', async () => {
@@ -32,9 +31,9 @@ describe('CTransition.vue', () => {
       }
     })
 
-    expect(wrapper.find('.c-transition').exists()).toBe(true)
+    expect(wrapper.find('[name="slide-fade"]').exists()).toBe(true)
 
-    const listItems = wrapper.findAll('.c-transition ul li')
+    const listItems = wrapper.findAll('ul li')
     expect(listItems.length).toBe(3)
     expect(listItems[0].text()).toBe('Item 1')
     expect(listItems[1].text()).toBe('Item 2')
